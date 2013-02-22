@@ -1,6 +1,6 @@
 # grunt-fest [![Build Status](https://travis-ci.org/eprev/grunt-fest.png)](https://travis-ci.org/eprev/grunt-fest)
 
-> Compile [Fest](https://github.com/fest/fest-tools) templates.
+> Compile [Fest](https://github.com/mailru/fest) templates.
 
 ## Getting Started
 
@@ -46,7 +46,7 @@ grunt.initConfig({
 Type: `String`
 Default value: `fest`
 
-Path to require fest library.
+Path to require Fest library.
 
 #### options.compile
 
