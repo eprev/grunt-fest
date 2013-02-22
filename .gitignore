@@ -1,5 +1,5 @@
 node_modules
 npm-debug.log
 test/tmp
-test/fixtures/**/*.js
-test/fixtures/**/*.xml.js
+test/fixtures/qux/*.js
+test/fixtures/qux/*/*.js
