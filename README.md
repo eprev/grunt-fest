@@ -86,34 +86,34 @@ grunt.initConfig({
                 debug: true
             }
         },
-        put_in_the_same_derictory: { // Compiles "test/fixtures/qux/**/*.xml" to "test/fixtures/qux/**/*.js"
-            src: 'test/fixtures/qux/**/*.xml'
+        put_in_the_same_derictory: { // Compiles "fest/**/*.xml" to "fest/**/*.js"
+            src: 'fest/**/*.xml'
         },
-        put_in_the_same_derictory_and_append_ext: { // Compiles "test/fixtures/qux/**/*.xml" to "test/fixtures/qux/**/*.xml.js"
-            src: 'test/fixtures/qux/**/*.xml',
+        put_in_the_same_derictory_and_append_ext: { // Compiles "fest/**/*.xml" to "fest/**/*.xml.js"
+            src: 'fest/**/*.xml',
             options: {
                 ext: '.xml.js'
             }
         },
-        'test/tmp': ['test/fixtures/qux/**/*.xml'] // Compiles "test/fixtures/qux/**/*.xml" to "test/tmp/test/fixtures/qux/**/*.js"
+        'build': ['fest/**/*.xml'] // Compiles "test/**/*.xml" to "build/fest/**/*.js"
     }
 })
 ```
 
 #### Dynamic mappings
 
-In this example Fest compiles "test/fixtures/**/*.xml" to "test/tmp/dynamic-compiled/**/*.js". See [Building the files object dynamically](http://gruntjs.com/configuring-tasks#building-the-files-object-dynamically) documentation for more information.
+In this example Fest compiles "fest/**/*.xml" to "fest-build/**/*.js". See [Building the files object dynamically](http://gruntjs.com/configuring-tasks#building-the-files-object-dynamically) documentation for more information.
 
 ```js
 grunt.initConfig({
     fest: {
         build: {
             files: [{
-                expand: true,                      // Enable dynamic expantion.
-                cwd: 'test/fixtures',              // Src matches are relative to this path.
-                src: ['**/*.xml'],                 // Actual pattern(s) to match.
-                dest: 'test/tmp/dynamic-compiled', // Destination path prefix.
-                ext: '.js'                         // Dest filepaths will have this extension.
+                expand: true,       // Enable dynamic expantion.
+                cwd: 'fest',        // Src matches are relative to this path.
+                src: ['**/*.xml'],  // Actual pattern(s) to match.
+                dest: 'fest-build', // Destination path prefix.
+                ext: '.js'          // Dest filepaths will have this extension.
             }],
             options: {
                 compile: {
@@ -135,11 +135,11 @@ grunt.initConfig({
     fest: {
         build: {
             files: [{
-                expand: true,                      // Enable dynamic expantion.
-                cwd: 'test/fixtures',              // Src matches are relative to this path.
-                src: ['**/*.xml'],                 // Actual pattern(s) to match.
-                dest: 'test/tmp/dynamic-compiled', // Destination path prefix.
-                ext: '.js'                         // Dest filepaths will have this extension.
+                expand: true,       // Enable dynamic expantion.
+                cwd: 'fest',        // Src matches are relative to this path.
+                src: ['**/*.xml'],  // Actual pattern(s) to match.
+                dest: 'fest-build', // Destination path prefix.
+                ext: '.js'          // Dest filepaths will have this extension.
             }],
             options: {
                 template: function (data) {
