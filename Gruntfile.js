@@ -25,7 +25,7 @@ module.exports = function (grunt) {
 
         // Before generating any new files, remove any previously-created files.
         clean: {
-            tests: ['test/tmp', 'test/fixtures/**/*.js', 'test/fixtures/**/*.xml.js']
+            tests: ['test/tmp', 'test/fixtures/**/*.js']
         },
 
         // Configuration to be run (and then tested).
@@ -50,19 +50,26 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,                         // Enable dynamic expantion.
                     src: ['test/fixtures/qux/**/*.xml'],
-                    dest: 'test/tmp/dynamic',                 // Destination path prefix.
+                    dest: 'test/tmp/dynamic',             // Destination path prefix.
                     ext: '.js'                            // Dest filepaths will have this extension.
                 }]
             },
-            dynamic_expansion_with_cwd: {
+            dynamic_expansion_with_cwd_and_template: {
                 files: [{
                     expand: true,                      // Enable dynamic expantion.
-                    cwd: 'test/fixtures',          // Src matches are relative to this path.
+                    cwd: 'test/fixtures',              // Src matches are relative to this path.
                     src: ['**/*.xml'],                 // Actual pattern(s) to match.
                     dest: 'test/tmp/dynamic-compiled', // Destination path prefix.
                     ext: '.js'                         // Dest filepaths will have this extension.
                 }],
                 options: {
+                    template: function (data) {
+                        // Make AMD module
+                        return grunt.template.process(
+                            'define(<%= JSON.stringify(name)  %>, function () { return <%= contents %> ; });',
+                            {data: data}
+                        );
+                    },
                     compile: {
                         debug: false,
                         beautify: false

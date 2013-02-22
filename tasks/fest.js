@@ -31,13 +31,13 @@ module.exports = function (grunt) {
 
         this.files.forEach(function (f) {
             f.src.forEach(function (src) {
-                var dest, relFn, contents;
+                var dest, relSrc, contents;
                 if (f.orig.expand) {
                     dest = f.dest;
-                    relFn = f.orig.cwd ? relative(f.orig.cwd, src) : src;
+                    relSrc = f.orig.cwd ? relative(f.orig.cwd, src) : src;
                 } else {
                     dest = f.dest ? join(f.dest, src) : src;
-                    relFn = src;
+                    relSrc = src;
                 }
                 var se = extname(src),
                     de = extname(dest);
@@ -52,6 +52,13 @@ module.exports = function (grunt) {
                     grunt.log.error(e.stack);
                 }
                 if (contents) {
+                    if (options.template) {
+                        contents = options.template({
+                            name: se ? relSrc.slice(0, -se.length) : relSrc,
+                            src: src,
+                            contents: contents
+                        });
+                    }
                     grunt.file.write(dest, contents);
                     grunt.log.ok();
                 }

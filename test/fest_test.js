@@ -59,7 +59,7 @@ exports.bem = {
         });
         test.done();
     },
-    dynamic_expansion_with_cwd: function (test) {
+    dynamic_expansion_with_cwd_and_template: function (test) {
         this.templates.forEach(function (tpl) {
             var actual = grunt.file.read('test/tmp/dynamic-compiled/' + tpl + '.js');
             var expected = grunt.file.read('test/expected/tmp/dynamic-compiled/' + tpl + '.js');
