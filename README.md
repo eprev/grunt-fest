@@ -1,6 +1,6 @@
-# grunt-bem [![Build Status](https://travis-ci.org/eprev/grunt-bem.png)](https://travis-ci.org/eprev/grunt-bem)
+# grunt-fest [![Build Status](https://travis-ci.org/eprev/grunt-fest.png)](https://travis-ci.org/eprev/grunt-fest)
 
-> Compile [Fest](https://github.com/bem/bem-tools) templates.
+> Compile [Fest](https://github.com/fest/fest-tools) templates.
 
 ## Getting Started
 
@@ -9,29 +9,31 @@ This plugin requires Grunt `~0.4.0`
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
 ```shell
-npm install grunt-bem --save-dev
+npm install grunt-fest --save-dev
 ```
 
 One the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
 
 ```js
-grunt.loadNpmTasks('grunt-bem');
+grunt.loadNpmTasks('grunt-fest');
 ```
 
-## The "bem" task
+## The "fest" task
 
 ### Overview
 
-In your project's Gruntfile, add a section named `bem` to the data object passed into `grunt.initConfig()`.
+In your project's Gruntfile, add a section named `fest` to the data object passed into `grunt.initConfig()`.
 
 ```js
 grunt.initConfig({
-    bem: {
+    fest: {
         options: {
             // Task-specific options go here.
         },
         target: {
-            // Target-specific options go here.
+            options: {
+                // Target-specific options go here.
+            }
         }
     }
 })
@@ -42,116 +44,119 @@ grunt.initConfig({
 #### options.require
 
 Type: `String`
-Default value: `bem`
+Default value: `fest`
 
-Path to require BEM library.
+Path to require fest library.
 
-#### options.root
+#### options.compile
 
-Type: `String`
-Default value: `.`
+Type: `Object`
+Default value: `undefined`
 
-Project root (cwd by default).
+Fest’s compile() options.
 
-#### options.method
-
-Type: `String`
-Default value: `make`
-
-Method to run.
-
-#### options.workers
-
-Type: `Integer`
-Default value: `10`
-
-Run number of workers.
-
-#### options.force
-
-Type: `Boolean`
-Default value: `False`
-
-Force rebuild.
-
-#### options.verbosity
+#### options.ext
 
 Type: `String`
-Default value: `info`
+Default value: `.js`
 
-Verbosity level (silly, verbose, info, warn, debug, error).
+Compiled file’s extension.
 
-#### options.targets
+#### options.template
 
-Type: `String`
-Default value: `target's name`
+Type: `Function`
+Default value: `undefined`
 
-Build targets
+This function is called when template will be compiled. It takes an argument as an object with the following properties:
+
+* `src` — path to the template
+* `name` — template’s name (relative to the source directory and w/o the extension)
+* `contents` — compiled template
 
 ### Usage Examples
 
-#### Default Options
-
-In this example, the default options are used to do build target `all` in the level `bem-project`. BEM is installed as a global package.
+#### Static mappings
 
 ```js
 grunt.initConfig({
-    bem: {
-        all: {
-            root: 'bem-project'
-        }
-    }
-})
-```
-
-#### Custom Options
-
-In this example, custom options are used to do build targets `desktop.bundles` and `touch.bundles`. BEM is installed as a local package.
-
-```js
-grunt.initConfig({
-    bem: {
+    fest: {
         options: {
-            require: 'bem-project/node_modules/bem',
-            root: 'bem-project'
+            compile: {
+                beautify: true,
+                debug: true
+            }
         },
-        'desktop.bundles touch.bundles': {
-            verbosity: 'warn'
+        put_in_the_same_derictory: { // Compiles "test/fixtures/qux/**/*.xml" to "test/fixtures/qux/**/*.js"
+            src: 'test/fixtures/qux/**/*.xml'
         },
+        put_in_the_same_derictory_and_append_ext: { // Compiles "test/fixtures/qux/**/*.xml" to "test/fixtures/qux/**/*.xml.js"
+            src: 'test/fixtures/qux/**/*.xml',
+            options: {
+                ext: '.xml.js'
+            }
+        },
+        'test/tmp': ['test/fixtures/qux/**/*.xml'] // Compiles "test/fixtures/qux/**/*.xml" to "test/tmp/test/fixtures/qux/**/*.js"
     }
 })
 ```
 
-#### Advanced Example
+#### Dynamic mappings
+
+In this example Fest compiles "test/fixtures/**/*.xml" to "test/tmp/dynamic-compiled/**/*.js". See [Building the files object dynamically](http://gruntjs.com/configuring-tasks#building-the-files-object-dynamically) documentation for more information.
 
 ```js
 grunt.initConfig({
-    watch: {
-        bem: {
-            files: ['bem-project/*.bundles/*/*.bemjson.js'],
-            tasks: ['bem:bundles'],
+    fest: {
+        build: {
+            files: [{
+                expand: true,                      // Enable dynamic expantion.
+                cwd: 'test/fixtures',              // Src matches are relative to this path.
+                src: ['**/*.xml'],                 // Actual pattern(s) to match.
+                dest: 'test/tmp/dynamic-compiled', // Destination path prefix.
+                ext: '.js'                         // Dest filepaths will have this extension.
+            }],
             options: {
-                interrupt: true
+                compile: {
+                    debug: false,
+                    beautify: false
+                }
             }
         }
-    },
-    bem: {
-        options: {
-            require: 'bem-project/node_modules/bem',
-            root: 'bem-project',
-            verbosity: 'warn'
-        },
-        'bundles': {
-            targets: 'desktop.bundles touch.bundles'
-        },
-        'bundles-forced': {
-            targets: 'desktop.bundles touch.bundles',
-            forced: true
+    }
+})
+```
+
+#### Template’s Usage
+
+In this example Grunt builds AMD modules for the compiled templates.
+
+```js
+grunt.initConfig({
+    fest: {
+        build: {
+            files: [{
+                expand: true,                      // Enable dynamic expantion.
+                cwd: 'test/fixtures',              // Src matches are relative to this path.
+                src: ['**/*.xml'],                 // Actual pattern(s) to match.
+                dest: 'test/tmp/dynamic-compiled', // Destination path prefix.
+                ext: '.js'                         // Dest filepaths will have this extension.
+            }],
+            options: {
+                template: function (data) {
+                    // Make AMD module
+                    return grunt.template.process(
+                        'define(<%= JSON.stringify(name)  %>, function () { return <%= contents %> ; });',
+                        {data: data}
+                    );
+                },
+                compile: {
+                    debug: false,
+                    beautify: false
+                }
+            }
         }
     }
 });
-
-grunt.registerTask('default', ['bem:bundles-forced']);
 ```
 
 ## Contributing
@@ -160,4 +165,4 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
-* 2013-02-20  v0.1.0  First official release.
+* 2013-02-22  v0.1.0  First official release.
