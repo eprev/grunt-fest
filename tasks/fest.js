@@ -57,6 +57,7 @@ module.exports = function (grunt) {
                         name = se ? relSrc.slice(0, -se.length) : relSrc;
                         contents = options.template({
                             src: src,
+                            dest: dest,
                             relSrc: relSrc,
                             name: name,
                             basename: basename(name),

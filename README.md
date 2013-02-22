@@ -71,6 +71,7 @@ This function is called when template will be compiled. It takes an argument as 
 
 * `src` — path to the template
 * `relSrc` — relative path to the template
+* `dest` — path to the compiled file
 * `name` — template’s name (relative to the source directory and w/o the extension)
 * `basename` — template’s basename
 * `contents` — compiled template
@@ -147,7 +148,7 @@ grunt.initConfig({
                 template: function (data) {
                     // Make AMD module
                     return grunt.template.process(
-                        'define(<%= JSON.stringify(relSrc)  %>, function () { return <%= contents %> ; });',
+                        'define(<%= JSON.stringify(name + ".js")  %>, function () { return <%= contents %> ; });',
                         {data: data}
                     );
                 },

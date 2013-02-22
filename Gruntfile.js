@@ -66,7 +66,7 @@ module.exports = function (grunt) {
                     template: function (data) {
                         // Make AMD module
                         return grunt.template.process(
-                            'define(<%= JSON.stringify(name)  %>, function () { return <%= contents %> ; });',
+                            'define(<%= JSON.stringify(name + ".js")  %>, function () { return <%= contents %> ; });',
                             {data: data}
                         );
                     },
