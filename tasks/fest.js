@@ -24,6 +24,7 @@ module.exports = function (grunt) {
                 ext: '.js'
             }),
             extname = path.extname,
+            basename = path.basename,
             join = path.join,
             relative = path.relative;
 
@@ -31,7 +32,7 @@ module.exports = function (grunt) {
 
         this.files.forEach(function (f) {
             f.src.forEach(function (src) {
-                var dest, relSrc, contents;
+                var dest, relSrc, name, contents;
                 if (f.orig.expand) {
                     dest = f.dest;
                     relSrc = f.orig.cwd ? relative(f.orig.cwd, src) : src;
@@ -53,9 +54,12 @@ module.exports = function (grunt) {
                 }
                 if (contents) {
                     if (options.template) {
+                        name = se ? relSrc.slice(0, -se.length) : relSrc;
                         contents = options.template({
-                            name: se ? relSrc.slice(0, -se.length) : relSrc,
                             src: src,
+                            relSrc: relSrc,
+                            name: name,
+                            basename: basename(name),
                             contents: contents
                         });
                     }

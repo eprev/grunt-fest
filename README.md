@@ -70,7 +70,9 @@ Default value: `undefined`
 This function is called when template will be compiled. It takes an argument as an object with the following properties:
 
 * `src` — path to the template
+* `relSrc` — relative path to the template
 * `name` — template’s name (relative to the source directory and w/o the extension)
+* `basename` — template’s basename
 * `contents` — compiled template
 
 ### Usage Examples
@@ -145,7 +147,7 @@ grunt.initConfig({
                 template: function (data) {
                     // Make AMD module
                     return grunt.template.process(
-                        'define(<%= JSON.stringify(name)  %>, function () { return <%= contents %> ; });',
+                        'define(<%= JSON.stringify(relSrc)  %>, function () { return <%= contents %> ; });',
                         {data: data}
                     );
                 },
