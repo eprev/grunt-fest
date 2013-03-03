@@ -26,7 +26,8 @@ module.exports = function (grunt) {
             extname = path.extname,
             basename = path.basename,
             join = path.join,
-            relative = path.relative;
+            relative = path.relative,
+            extend = grunt.util._.extend;
 
         var compile = require(requireResolve(options.require)).compile;
 
@@ -47,7 +48,7 @@ module.exports = function (grunt) {
                 }
                 grunt.log.write('Compiling "' + src + '" to "' + dest + '"...');
                 try {
-                    contents = compile(src, options.compile);
+                    contents = compile(src, extend({}, options.compile));
                 } catch (e) {
                     grunt.log.writeln();
                     grunt.log.error(e.stack);
