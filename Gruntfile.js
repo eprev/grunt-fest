@@ -75,6 +75,13 @@ module.exports = function (grunt) {
                         beautify: false
                     }
                 }
+            },
+            named_function: {
+                src: 'test/fixtures/qux/foo.xml',
+                dest: 'test/tmp/named/foo.js',
+                options: {
+                    name: 'foo'
+                }
             }
         },
 

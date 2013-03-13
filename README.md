@@ -62,6 +62,13 @@ Default value: `.js`
 
 Compiled file’s extension.
 
+#### options.name
+
+Type: `String`
+Default value: `undefined`
+
+Compiled function’s name.
+
 #### options.template
 
 Type: `Function`
@@ -89,16 +96,31 @@ grunt.initConfig({
                 debug: true
             }
         },
-        put_in_the_same_derictory: { // Compiles "fest/**/*.xml" to "fest/**/*.js"
+
+        // Compiles "fest/**/*.xml" to "fest/**/*.js"
+        put_in_the_same_derictory: {
             src: 'fest/**/*.xml'
         },
-        put_in_the_same_derictory_and_append_ext: { // Compiles "fest/**/*.xml" to "fest/**/*.xml.js"
+
+        // Compiles "fest/**/*.xml" to "fest/**/*.xml.js"
+        put_in_the_same_derictory_and_append_ext: {
             src: 'fest/**/*.xml',
             options: {
                 ext: '.xml.js'
             }
         },
-        'build': ['fest/**/*.xml'] // Compiles "test/**/*.xml" to "build/fest/**/*.js"
+
+        // Compiles "test/**/*.xml" to "build/fest/**/*.js",
+        'build': ['fest/**/*.xml']
+
+        // Compiles "test/qux.xml" to named function and writes it to "build/qux.js"
+        v8: {
+            src: 'fest/qux.xml',
+            dest 'build/qux.js',
+            options: {
+                name: 'qux'
+            }
+        }
     }
 })
 ```
@@ -148,7 +170,7 @@ grunt.initConfig({
                 template: function (data) {
                     // Make AMD module
                     return grunt.template.process(
-                        'define(<%= JSON.stringify(name + ".js")  %>, function () { return <%= contents %> ; });',
+                        'define(<%= JSON.stringify(name)  %>, function () { return <%= contents %> ; });',
                         {data: data}
                     );
                 },

@@ -35,9 +35,15 @@ module.exports = function (grunt) {
             f.src.forEach(function (src) {
                 var dest, relSrc, name, contents;
                 if (f.orig.expand) {
+                    // dynamic mapping
                     dest = f.dest;
                     relSrc = f.orig.cwd ? relative(f.orig.cwd, src) : src;
+                } else if (f.orig.src.length === 1 && grunt.file.isFile(f.orig.src[0])) {
+                    // file to file mapping
+                    dest = f.dest;
+                    relSrc = src;
                 } else {
+                    // files to directory mapping
                     dest = f.dest ? join(f.dest, src) : src;
                     relSrc = src;
                 }
@@ -48,7 +54,7 @@ module.exports = function (grunt) {
                 }
                 grunt.log.write('Compiling "' + src + '" to "' + dest + '"...');
                 try {
-                    contents = compile(src, extend({}, options.compile));
+                    contents = compile(src, extend({}, options.compile), options.name);
                 } catch (e) {
                     grunt.log.writeln();
                     grunt.log.error(e.stack);
