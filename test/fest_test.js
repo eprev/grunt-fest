@@ -66,5 +66,13 @@ exports.bem = {
             test.equal(actual, expected);
         });
         test.done();
+    },
+    named_function: function (test) {
+        ['foo'].forEach(function (tpl) {
+            var actual = grunt.file.read('test/tmp/named/' + tpl + '.js');
+            var expected = grunt.file.read('test/expected/tmp/named/' + tpl + '.js');
+            test.equal(actual, expected);
+        });
+        test.done();
     }
 };
