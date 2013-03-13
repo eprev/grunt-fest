@@ -111,7 +111,7 @@ grunt.initConfig({
         },
 
         // Compiles "test/**/*.xml" to "build/fest/**/*.js",
-        'build': ['fest/**/*.xml']
+        'build': ['fest/**/*.xml'],
 
         // Compiles "test/qux.xml" to named function and writes it to "build/qux.js"
         v8: {
