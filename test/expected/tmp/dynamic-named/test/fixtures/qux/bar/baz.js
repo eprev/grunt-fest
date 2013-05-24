@@ -1,4 +1,4 @@
-function(__fest_context) {
+function baz(__fest_context) {
     "use strict";
     var __fest_self = this,
         __fest_buf = "",
