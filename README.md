@@ -67,7 +67,7 @@ Compiled file’s extension.
 Type: `String`
 Default value: `undefined`
 
-Compiled function’s name.
+Compiled function’s name. The basename of the source file will be used if is set to True.
 
 #### options.template
 

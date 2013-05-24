@@ -1,4 +1,4 @@
-function(__fest_context) {
+function foo(__fest_context) {
     "use strict";
     var __fest_self = this,
         __fest_buf = "",
@@ -90,46 +90,10 @@ function(__fest_context) {
         } else if (typeof s === "undefined") return "";
         return s;
     }
-    __fest_debug_file = "test\/fixtures\/qux\/bar\/baz.xml";
+    __fest_debug_file = "test\/fixtures\/qux\/foo.xml";
     __fest_debug_line = "0";
     __fest_debug_block = "fest:template";
-    __fest_debug_file = "test\/fixtures\/qux\/bar\/baz.xml";
-    __fest_debug_line = "1";
-    __fest_debug_block = "fest:get";
-    __fest_select = "block";
-    __fest_params = {};
-    try {
-        __fest_params = Grunt
-    } catch (e) {
-        __fest_log_error(e.message)
-    }
-    __fest_chunks.push(__fest_buf, {
-        name: __fest_select,
-        params: __fest_params,
-        cp: false
-    });
-    __fest_buf = "";
-    __fest_debug_file = "test\/fixtures\/qux\/bar\/baz.xml";
-    __fest_debug_line = "2";
-    __fest_debug_block = "fest:set";
-    __fest_blocks.block = function(params) {
-        var __fest_buf = "";
-        __fest_buf += ("Hello,");
-        __fest_debug_file = "test\/fixtures\/qux\/bar\/baz.xml";
-        __fest_debug_line = "3";
-        __fest_debug_block = "fest:space";
-        __fest_buf += (" ");
-        __fest_debug_file = "test\/fixtures\/qux\/bar\/baz.xml";
-        __fest_debug_line = "3";
-        __fest_debug_block = "fest:value";
-        try {
-            __fest_buf += (__fest_escapeHTML(params))
-        } catch (e) {
-            __fest_log_error(e.message + "3");
-        }
-        __fest_buf += ("!");
-        return __fest_buf;
-    };
+    __fest_buf += ("Test");
     __fest_to = __fest_chunks.length;
     if (__fest_to) {
         __fest_iterator = 0;

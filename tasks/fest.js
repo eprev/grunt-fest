@@ -53,8 +53,12 @@ module.exports = function (grunt) {
                     dest = dest.slice(0, -de.length) + options.ext;
                 }
                 grunt.log.write('Compiling "' + src + '" to "' + dest + '"...');
+                name = options.name;
+                if (name === true) {
+                    name = basename(src, se);
+                }
                 try {
-                    contents = compile(src, extend({}, options.compile), options.name);
+                    contents = compile(src, extend({}, options.compile), name);
                 } catch (e) {
                     grunt.log.writeln();
                     grunt.log.error(e.stack);

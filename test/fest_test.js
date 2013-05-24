@@ -74,5 +74,13 @@ exports.bem = {
             test.equal(actual, expected);
         });
         test.done();
+    },
+    named_function_within_dynamic_expansion: function (test) {
+        this.templates.forEach(function (tpl) {
+            var actual = grunt.file.read('test/tmp/dynamic-named/test/fixtures/' + tpl + '.js');
+            var expected = grunt.file.read('test/expected/tmp/dynamic-named/test/fixtures/' + tpl + '.js');
+            test.equal(actual, expected);
+        });
+        test.done();
     }
 };
