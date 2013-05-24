@@ -83,7 +83,7 @@ module.exports = function (grunt) {
                     name: 'foo'
                 }
             },
-            named_function_withing_dynamic_expansion: {
+            named_function_within_dynamic_expansion: {
                 files: [{
                     expand: true,                         // Enable dynamic expantion.
                     src: ['test/fixtures/qux/**/*.xml'],

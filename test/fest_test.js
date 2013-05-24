@@ -29,7 +29,7 @@ exports.bem = {
     },
     put_in_the_same_derictory: function (test) {
         this.templates.forEach(function (tpl) {
-            var actual = grunt.file.read('test/fixtures/' + tpl + '.js');
+            var actual = grunt.file.read('test/expected/fixtures/' + tpl + '.js');
             var expected = grunt.file.read('test/fixtures/' + tpl + '.js');
             test.equal(actual, expected);
         });
@@ -37,7 +37,7 @@ exports.bem = {
     },
     put_in_the_same_derictory_and_append_ext: function (test) {
         this.templates.forEach(function (tpl) {
-            var actual = grunt.file.read('test/fixtures/' + tpl + '.xml.js');
+            var actual = grunt.file.read('test/expected/fixtures/' + tpl + '.xml.js');
             var expected = grunt.file.read('test/fixtures/' + tpl + '.xml.js');
             test.equal(actual, expected);
         });
