@@ -190,4 +190,8 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
-* 2013-02-22  v0.1.0  First official release.
+* 2013-11-27  v0.1.4  Upgraded dependencies
+* 2013-05-24  v0.1.3  Support for function name within dynamic mappings
+* 2013-03-13  v0.1.2  Added option to name compiled function
+* 2013-03-04  v0.1.1  Use of initial compile options
+* 2013-02-22  v0.1.0  First official release
