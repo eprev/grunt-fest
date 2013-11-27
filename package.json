@@ -1,7 +1,7 @@
 {
     "name": "grunt-fest",
     "description": "Compile Fest templates",
-    "version": "0.1.3",
+    "version": "0.1.4",
     "homepage": "https://github.com/eprev/grunt-fest",
     "author": {
         "name": "Anton Eprev",
@@ -25,12 +25,14 @@
     "scripts": {
         "test": "grunt test"
     },
+    "dependencies": {
+        "fest": "0.8.0"
+    },
     "devDependencies": {
-        "grunt-contrib-jshint": "~0.1.1",
-        "grunt-contrib-clean": "~0.4.0",
-        "grunt-contrib-nodeunit": "~0.1.2",
-        "grunt": "~0.4.0",
-        "fest": "~0.5.4"
+        "grunt-contrib-jshint": "0.7.2",
+        "grunt-contrib-clean": "0.5.0",
+        "grunt-contrib-nodeunit": "0.2.2",
+        "grunt": "0.4.2"
     },
     "peerDependencies": {
         "grunt": "~0.4.0"
