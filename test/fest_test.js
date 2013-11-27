@@ -29,57 +29,71 @@ exports.bem = {
     },
     put_in_the_same_derictory: function (test) {
         this.templates.forEach(function (tpl) {
-            var actual = grunt.file.read('test/expected/fixtures/' + tpl + '.js');
-            var expected = grunt.file.read('test/fixtures/' + tpl + '.js');
-            test.equal(actual, expected);
+            var actualFn = 'test/expected/fixtures/' + tpl + '.js',
+                expectedFn = 'test/fixtures/' + tpl + '.js',
+                actual = grunt.file.read(actualFn),
+                expected = grunt.file.read(expectedFn);
+            test.equal(actual, expected, actualFn + ' != ' + expectedFn);
         });
         test.done();
     },
     put_in_the_same_derictory_and_append_ext: function (test) {
         this.templates.forEach(function (tpl) {
-            var actual = grunt.file.read('test/expected/fixtures/' + tpl + '.xml.js');
-            var expected = grunt.file.read('test/fixtures/' + tpl + '.xml.js');
-            test.equal(actual, expected);
+            var actualFn = 'test/expected/fixtures/' + tpl + '.xml.js',
+                expectedFn = 'test/fixtures/' + tpl + '.xml.js',
+                actual = grunt.file.read(actualFn),
+                expected = grunt.file.read(expectedFn);
+            test.equal(actual, expected, actualFn + ' != ' + expectedFn);
         });
         test.done();
     },
     'test/tmp': function (test) {
         this.templates.forEach(function (tpl) {
-            var actual = grunt.file.read('test/tmp/test/fixtures/' + tpl + '.js');
-            var expected = grunt.file.read('test/expected/tmp/test/fixtures/' + tpl + '.js');
-            test.equal(actual, expected);
+            var actualFn = 'test/tmp/test/fixtures/' + tpl + '.js',
+                expectedFn = 'test/expected/tmp/test/fixtures/' + tpl + '.js',
+                actual = grunt.file.read(actualFn),
+                expected = grunt.file.read(expectedFn);
+            test.equal(actual, expected, actualFn + ' != ' + expectedFn);
         });
         test.done();
     },
     dynamic_expansion: function (test) {
         this.templates.forEach(function (tpl) {
-            var actual = grunt.file.read('test/tmp/dynamic/test/fixtures/' + tpl + '.js');
-            var expected = grunt.file.read('test/expected/tmp/dynamic/test/fixtures/' + tpl + '.js');
-            test.equal(actual, expected);
+            var actualFn = 'test/tmp/dynamic/test/fixtures/' + tpl + '.js',
+                expectedFn = 'test/expected/tmp/dynamic/test/fixtures/' + tpl + '.js',
+                actual = grunt.file.read(actualFn),
+                expected = grunt.file.read(expectedFn);
+            test.equal(actual, expected, actualFn + ' != ' + expectedFn);
         });
         test.done();
     },
     dynamic_expansion_with_cwd_and_template: function (test) {
         this.templates.forEach(function (tpl) {
-            var actual = grunt.file.read('test/tmp/dynamic-compiled/' + tpl + '.js');
-            var expected = grunt.file.read('test/expected/tmp/dynamic-compiled/' + tpl + '.js');
-            test.equal(actual, expected);
+            var actualFn = 'test/tmp/dynamic-compiled/' + tpl + '.js',
+                expectedFn = 'test/expected/tmp/dynamic-compiled/' + tpl + '.js',
+                actual = grunt.file.read(actualFn),
+                expected = grunt.file.read(expectedFn);
+            test.equal(actual, expected, actualFn + ' != ' + expectedFn);
         });
         test.done();
     },
     named_function: function (test) {
         ['foo'].forEach(function (tpl) {
-            var actual = grunt.file.read('test/tmp/named/' + tpl + '.js');
-            var expected = grunt.file.read('test/expected/tmp/named/' + tpl + '.js');
-            test.equal(actual, expected);
+            var actualFn = 'test/tmp/named/' + tpl + '.js',
+                expectedFn = 'test/expected/tmp/named/' + tpl + '.js',
+                actual = grunt.file.read(actualFn),
+                expected = grunt.file.read(expectedFn);
+            test.equal(actual, expected, actualFn + ' != ' + expectedFn);
         });
         test.done();
     },
     named_function_within_dynamic_expansion: function (test) {
         this.templates.forEach(function (tpl) {
-            var actual = grunt.file.read('test/tmp/dynamic-named/test/fixtures/' + tpl + '.js');
-            var expected = grunt.file.read('test/expected/tmp/dynamic-named/test/fixtures/' + tpl + '.js');
-            test.equal(actual, expected);
+            var actualFn = 'test/tmp/dynamic-named/test/fixtures/' + tpl + '.js',
+                expectedFn = 'test/expected/tmp/dynamic-named/test/fixtures/' + tpl + '.js',
+                actual = grunt.file.read(actualFn),
+                expected = grunt.file.read(expectedFn);
+            test.equal(actual, expected, actualFn + ' != ' + expectedFn);
         });
         test.done();
     }
