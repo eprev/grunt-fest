@@ -1,7 +1,7 @@
 {
     "name": "grunt-fest",
     "description": "Compile Fest templates",
-    "version": "0.1.4",
+    "version": "0.1.5",
     "homepage": "https://github.com/eprev/grunt-fest",
     "author": {
         "name": "Anton Eprev",
@@ -26,7 +26,7 @@
         "test": "grunt test"
     },
     "dependencies": {
-        "fest": "0.8.0"
+        "fest": "0.8.2"
     },
     "devDependencies": {
         "grunt-contrib-jshint": "0.7.2",

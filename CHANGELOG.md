@@ -1,3 +1,5 @@
+v0.1.5
+    Upgraded fest to 0.8.2
 v0.1.4
     Upgraded dependencies
 v0.1.3
