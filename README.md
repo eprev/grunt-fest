@@ -1,4 +1,4 @@
-# grunt-fest [![Build Status](https://travis-ci.org/eprev/grunt-fest.png)](https://travis-ci.org/eprev/grunt-fest)
+# grunt-fest [![Build Status](https://travis-ci.org/eprev/grunt-fest.svg)](https://travis-ci.org/eprev/grunt-fest)
 
 > Compile [Fest](https://github.com/mailru/fest) templates.
 
