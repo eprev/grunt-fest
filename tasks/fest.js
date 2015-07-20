@@ -77,6 +77,8 @@ module.exports = function (grunt) {
                     }
                     grunt.file.write(dest, contents);
                     grunt.log.ok();
+                } else {
+                    grunt.fail.fatal('Can\'t compile ' + src);
                 }
             });
         });
