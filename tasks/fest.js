@@ -40,7 +40,7 @@ module.exports = function (grunt) {
                     relSrc = f.orig.cwd ? relative(f.orig.cwd, src) : src;
                 } else if (f.orig.src.length === 1 && grunt.file.isFile(f.orig.src[0])) {
                     // file to file mapping
-                    dest = f.dest;
+                    dest = f.dest || src;
                     relSrc = src;
                 } else {
                     // files to directory mapping
