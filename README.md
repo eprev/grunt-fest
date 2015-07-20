@@ -190,27 +190,31 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
-* 2015-07-20 _v0.1.5_
+* 2015-07-20 _v0.1.6_
 
     - Drop support for Node.js 0.8;
     - The task fails if there are compilation errors.
 
+* 2014-02-12 _v0.1.5_
+
+    - Upgraded fest to 0.8.2.
+
 * 2013-11-27 _v0.1.4_
 
-    - Upgraded dependencies
+    - Upgraded dependencies.
 
 * 2013-05-24 _v0.1.3_
 
-    - Support for function name within dynamic mappings
+    - Support for function name within dynamic mappings.
 
 * 2013-03-13 _v0.1.2_
 
-    - Added option to name compiled function
+    - Added option to name compiled function.
 
 * 2013-03-04 _v0.1.1_
 
-    - Use of initial compile options
+    - Use of initial compile options.
 
 * 2013-02-22 _v0.1.0_
 
-    - First official release
+    - First official release.
