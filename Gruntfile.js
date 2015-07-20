@@ -83,6 +83,10 @@ module.exports = function (grunt) {
                     name: 'foo'
                 }
             },
+	    // grunt-parallelize run fest with same config
+            just_src_without_dest: {
+                src: 'test/fixtures/qux/foo.xml'
+            },
             named_function_within_dynamic_expansion: {
                 files: [{
                     expand: true,                         // Enable dynamic expantion.
