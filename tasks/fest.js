@@ -11,6 +11,7 @@
 module.exports = function (grunt) {
 
     var path = require('path'),
+        lodash = require('lodash'),
         resolve = path.resolve.bind(process.cwd()),
         requireResolve = function (module) {
             var start = module.substr(0, 2);
@@ -27,7 +28,7 @@ module.exports = function (grunt) {
             basename = path.basename,
             join = path.join,
             relative = path.relative,
-            extend = grunt.util._.extend;
+            extend = lodash.extend;
 
         var compile = require(requireResolve(options.require)).compile;
 
