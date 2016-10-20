@@ -1,7 +1,7 @@
 {
   "name": "grunt-fest",
   "description": "Compile Fest templates",
-  "version": "0.1.6",
+  "version": "1.0.0",
   "homepage": "https://github.com/eprev/grunt-fest",
   "author": {
     "name": "Anton Eprev",
