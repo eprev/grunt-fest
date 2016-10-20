@@ -1,43 +1,42 @@
 {
-    "name": "grunt-fest",
-    "description": "Compile Fest templates",
-    "version": "0.1.6",
-    "homepage": "https://github.com/eprev/grunt-fest",
-    "author": {
-        "name": "Anton Eprev",
-        "email": "a.eprev@gmail.com"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/eprev/grunt-fest.git"
-    },
-    "bugs": {
-        "url": "https://github.com/eprev/grunt-fest/issues"
-    },
-    "licenses": [{
-        "type": "MIT",
-        "url": "https://github.com/eprev/grunt-fest/blob/master/LICENSE.md"
-    }],
-    "main": "Gruntfile.js",
-    "engines": {
-        "node": ">= 0.10.0"
-    },
-    "scripts": {
-        "test": "grunt test"
-    },
-    "dependencies": {
-        "fest": "0.8.2"
-    },
-    "devDependencies": {
-        "grunt-contrib-jshint": "0.7.2",
-        "grunt-contrib-clean": "0.5.0",
-        "grunt-contrib-nodeunit": "0.2.2",
-        "grunt": "0.4.2"
-    },
-    "peerDependencies": {
-        "grunt": "~0.4.0"
-    },
-    "keywords": [
-        "gruntplugin", "fest"
-    ]
+  "name": "grunt-fest",
+  "description": "Compile Fest templates",
+  "version": "1.0.0",
+  "homepage": "https://github.com/eprev/grunt-fest",
+  "author": {
+    "name": "Anton Eprev",
+    "email": "a.eprev@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/eprev/grunt-fest.git"
+  },
+  "bugs": {
+    "url": "https://github.com/eprev/grunt-fest/issues"
+  },
+  "license": "MIT",
+  "main": "Gruntfile.js",
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "dependencies": {
+    "fest": "0.8.2"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.0",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-nodeunit": "^1.0.0",
+    "lodash": "^4.16.4"
+  },
+  "peerDependencies": {
+    "grunt": ">=0.4.0"
+  },
+  "keywords": [
+    "gruntplugin",
+    "fest"
+  ]
 }
