@@ -190,6 +190,10 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
+* 2016-10-21 _v1.0.0_
+
+    - Bump to Grunt 1.x support
+
 * 2015-07-20 _v0.1.6_
 
     - Drop support for Node.js 0.8;
